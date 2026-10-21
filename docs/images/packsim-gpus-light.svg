@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="234" viewBox="0 0 720 234" role="img" aria-label="20 GPUs with one replica per whole GPU versus 8 GPUs when the same 20 replicas are packed onto MIG instances" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<rect x="0.5" y="0.5" width="719" height="233" rx="8" fill="#fcfcfb" stroke="#e1e0d9"/>
+<text x="24.0" y="34.0" fill="#0b0b0b" font-size="15" font-weight="600" text-anchor="start">A100-80GB GPUs needed for the 20-replica sample fleet</text>
+<text x="24.0" y="54.0" fill="#52514e" font-size="12" font-weight="400" text-anchor="start">Static allocation from the planner's memory estimates (cmd/packsim), not measured GPU utilization</text>
+<line x1="24.0" y1="78" x2="24.0" y2="190" stroke="#c3c2b7" stroke-width="1"/>
+<text x="24.0" y="206.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">0</text>
+<line x1="168.0" y1="78" x2="168.0" y2="190" stroke="#e1e0d9" stroke-width="1"/>
+<text x="168.0" y="206.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">5</text>
+<line x1="312.0" y1="78" x2="312.0" y2="190" stroke="#e1e0d9" stroke-width="1"/>
+<text x="312.0" y="206.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">10</text>
+<line x1="456.0" y1="78" x2="456.0" y2="190" stroke="#e1e0d9" stroke-width="1"/>
+<text x="456.0" y="206.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">15</text>
+<line x1="600.0" y1="78" x2="600.0" y2="190" stroke="#e1e0d9" stroke-width="1"/>
+<text x="600.0" y="206.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">20</text>
+<text x="600.0" y="222.0" fill="#898781" font-size="11" font-weight="400" text-anchor="end">GPUs</text>
+<text x="24.0" y="93.0" fill="#52514e" font-size="13" font-weight="400" text-anchor="start" stroke="#fcfcfb" stroke-width="5" stroke-linejoin="round" paint-order="stroke">One replica per whole GPU<tspan fill="#898781" font-weight="400">  ·  planner estimates fill 26.6% of their memory</tspan></text>
+<path d="M24.0,100.0 H596.0 Q600.0,100.0 600.0,104.0 V118.0 Q600.0,122.0 596.0,122.0 H24.0 Z" fill="#b9b7ae"><title>One replica per whole GPU: 20 GPUs for 20 replicas; planner estimates use 26.6% of their memory</title></path>
+<text x="608.0" y="116.0" fill="#0b0b0b" font-size="14" font-weight="600" text-anchor="start">20 GPUs</text>
+<text x="24.0" y="147.0" fill="#52514e" font-size="13" font-weight="400" text-anchor="start" stroke="#fcfcfb" stroke-width="5" stroke-linejoin="round" paint-order="stroke">MIG-packed (first-fit decreasing)<tspan fill="#898781" font-weight="400">  ·  planner estimates fill 66.5% of their memory</tspan></text>
+<path d="M24.0,154.0 H250.4 Q254.4,154.0 254.4,158.0 V172.0 Q254.4,176.0 250.4,176.0 H24.0 Z" fill="#2a78d6"><title>MIG-packed (first-fit decreasing): 8 GPUs for 20 replicas; planner estimates use 66.5% of their memory</title></path>
+<text x="262.4" y="170.0" fill="#0b0b0b" font-size="14" font-weight="600" text-anchor="start">8 GPUs</text>
+</svg>

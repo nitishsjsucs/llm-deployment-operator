@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="300" viewBox="0 0 720 300" role="img" aria-label="Llama-3.1-8B memory estimate per checkpoint: fp16 24.46 GiB on 3g.40gb; gptq-int8 18.11 GiB on 3g.40gb; awq-int4 14.83 GiB on 1g.20gb; gptq-int4 14.83 GiB on 1g.20gb" font-family="system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif">
+<rect x="0.5" y="0.5" width="719" height="299" rx="8" fill="#1a1a19" stroke="#2c2c2a"/>
+<text x="24.0" y="34.0" fill="#f0efec" font-size="15" font-weight="600" text-anchor="start">Llama-3.1-8B: per-replica memory estimate by checkpoint</text>
+<text x="24.0" y="54.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="start">max-model-len 8192, max-num-seqs 8, A100-80GB  ·  static calculation, nothing was loaded</text>
+<rect x="24" y="70" width="12" height="12" rx="2" fill="#3987e5"/>
+<text x="42.0" y="80.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="start">Weights</text>
+<rect x="113" y="70" width="12" height="12" rx="2" fill="#d95926"/>
+<text x="131.0" y="80.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="start">KV cache</text>
+<rect x="209" y="70" width="12" height="12" rx="2" fill="#199e70"/>
+<text x="227.0" y="80.0" fill="#c3c2b7" font-size="12" font-weight="400" text-anchor="start">Runtime overhead</text>
+<line x1="104.0" y1="112" x2="104.0" y2="256" stroke="#383835" stroke-width="1"/>
+<text x="104.0" y="272.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">0</text>
+<line x1="233.0" y1="112" x2="233.0" y2="256" stroke="#2c2c2a" stroke-width="1"/>
+<text x="233.0" y="272.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">10</text>
+<line x1="362.0" y1="112" x2="362.0" y2="256" stroke="#2c2c2a" stroke-width="1"/>
+<text x="362.0" y="272.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">20</text>
+<line x1="491.0" y1="112" x2="491.0" y2="256" stroke="#2c2c2a" stroke-width="1"/>
+<text x="491.0" y="272.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">30</text>
+<line x1="620.0" y1="112" x2="620.0" y2="256" stroke="#2c2c2a" stroke-width="1"/>
+<text x="620.0" y="272.0" fill="#898781" font-size="11" font-weight="400" text-anchor="middle">40</text>
+<text x="620.0" y="288.0" fill="#898781" font-size="11" font-weight="400" text-anchor="end">GiB</text>
+<rect x="104.0" y="121.0" width="191.0" height="18" fill="#3987e5"><title>fp16 Weights: 14.96 GiB</title></rect>
+<rect x="297.0" y="121.0" width="101.2" height="18" fill="#d95926"><title>fp16 KV cache: 8.00 GiB</title></rect>
+<path d="M400.2,121.0 H415.5 Q419.5,121.0 419.5,125.0 V135.0 Q419.5,139.0 415.5,139.0 H400.2 Z" fill="#199e70"><title>fp16 Runtime overhead: 1.50 GiB</title></path>
+<rect x="104.0" y="157.0" width="109.1" height="18" fill="#3987e5"><title>gptq-int8 Weights: 8.61 GiB</title></rect>
+<rect x="215.1" y="157.0" width="101.2" height="18" fill="#d95926"><title>gptq-int8 KV cache: 8.00 GiB</title></rect>
+<path d="M318.3,157.0 H333.6 Q337.6,157.0 337.6,161.0 V171.0 Q337.6,175.0 333.6,175.0 H318.3 Z" fill="#199e70"><title>gptq-int8 Runtime overhead: 1.50 GiB</title></path>
+<rect x="104.0" y="193.0" width="66.8" height="18" fill="#3987e5"><title>awq-int4 Weights: 5.33 GiB</title></rect>
+<rect x="172.8" y="193.0" width="101.2" height="18" fill="#d95926"><title>awq-int4 KV cache: 8.00 GiB</title></rect>
+<path d="M276.0,193.0 H291.3 Q295.3,193.0 295.3,197.0 V207.0 Q295.3,211.0 291.3,211.0 H276.0 Z" fill="#199e70"><title>awq-int4 Runtime overhead: 1.50 GiB</title></path>
+<rect x="104.0" y="229.0" width="66.8" height="18" fill="#3987e5"><title>gptq-int4 Weights: 5.33 GiB</title></rect>
+<rect x="172.8" y="229.0" width="101.2" height="18" fill="#d95926"><title>gptq-int4 KV cache: 8.00 GiB</title></rect>
+<path d="M276.0,229.0 H291.3 Q295.3,229.0 295.3,233.0 V243.0 Q295.3,247.0 291.3,247.0 H276.0 Z" fill="#199e70"><title>gptq-int4 Runtime overhead: 1.50 GiB</title></path>
+<line x1="330.4" y1="104" x2="330.4" y2="256" stroke="#c3c2b7" stroke-width="1.5"/>
+<line x1="559.8" y1="104" x2="559.8" y2="256" stroke="#c3c2b7" stroke-width="1.5"/>
+<text x="92.0" y="134.0" fill="#c3c2b7" font-size="13" font-weight="400" text-anchor="end">fp16</text>
+<text x="427.5" y="134.0" fill="#f0efec" font-size="13" font-weight="600" text-anchor="start" stroke="#1a1a19" stroke-width="5" stroke-linejoin="round" paint-order="stroke">24.46 GiB<tspan fill="#898781" font-weight="400">  → 3g.40gb</tspan></text>
+<text x="92.0" y="170.0" fill="#c3c2b7" font-size="13" font-weight="400" text-anchor="end">gptq-int8</text>
+<text x="345.6" y="170.0" fill="#f0efec" font-size="13" font-weight="600" text-anchor="start" stroke="#1a1a19" stroke-width="5" stroke-linejoin="round" paint-order="stroke">18.11 GiB<tspan fill="#898781" font-weight="400">  → 3g.40gb</tspan></text>
+<text x="92.0" y="206.0" fill="#c3c2b7" font-size="13" font-weight="400" text-anchor="end">awq-int4</text>
+<text x="303.3" y="206.0" fill="#f0efec" font-size="13" font-weight="600" text-anchor="start" stroke="#1a1a19" stroke-width="5" stroke-linejoin="round" paint-order="stroke">14.83 GiB<tspan fill="#898781" font-weight="400">  → 1g.20gb</tspan></text>
+<text x="92.0" y="242.0" fill="#c3c2b7" font-size="13" font-weight="400" text-anchor="end">gptq-int4</text>
+<text x="303.3" y="242.0" fill="#f0efec" font-size="13" font-weight="600" text-anchor="start" stroke="#1a1a19" stroke-width="5" stroke-linejoin="round" paint-order="stroke">14.83 GiB<tspan fill="#898781" font-weight="400">  → 1g.20gb</tspan></text>
+<text x="330.4" y="99.0" fill="#c3c2b7" font-size="11" font-weight="600" text-anchor="middle">1g.20gb usable: 17.55 GiB</text>
+<text x="559.8" y="99.0" fill="#c3c2b7" font-size="11" font-weight="600" text-anchor="middle">3g.40gb usable: 35.33 GiB</text>
+</svg>

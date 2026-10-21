@@ -1,0 +1,282 @@
+{
+  "description": "Static allocation calculation by cmd/packsim from the planner's memory estimates (weights + KV cache for max-num-seqs sequences at max-model-len + fixed 1.5 GiB runtime overhead). No model was loaded and no GPU utilization was measured. Memory values are GiB.",
+  "commands": {
+    "fleet": "go run ./cmd/packsim",
+    "explain": "go run ./cmd/packsim -explain llama-3.1-8b"
+  },
+  "fleet": {
+    "gpu": {
+      "name": "A100-80GB",
+      "memory_gib": 80,
+      "compute_slices": 7,
+      "memory_slices": 8
+    },
+    "serving_shape": {
+      "max_model_len": 8192,
+      "max_num_seqs": 8,
+      "gpu_memory_utilization": 0.9
+    },
+    "workloads": [
+      {
+        "name": "llama-3.1-8b-chat",
+        "replicas": 8,
+        "variant": "awq-int4",
+        "weights_gib": 5.33,
+        "kv_cache_gib": 8.0,
+        "overhead_gib": 1.5,
+        "estimate_gib": 14.83,
+        "mig_profile": "1g.20gb",
+        "replicas_per_gpu": 4
+      },
+      {
+        "name": "qwen2.5-7b-assistant",
+        "replicas": 6,
+        "variant": "awq-int4",
+        "weights_gib": 5.19,
+        "kv_cache_gib": 3.5,
+        "overhead_gib": 1.5,
+        "estimate_gib": 10.19,
+        "mig_profile": "1g.20gb",
+        "replicas_per_gpu": 4
+      },
+      {
+        "name": "qwen2.5-14b-rag",
+        "replicas": 3,
+        "variant": "gptq-int4",
+        "weights_gib": 9.29,
+        "kv_cache_gib": 12.0,
+        "overhead_gib": 1.5,
+        "estimate_gib": 22.79,
+        "mig_profile": "3g.40gb",
+        "replicas_per_gpu": 2
+      },
+      {
+        "name": "llama-3.1-70b-reasoning",
+        "replicas": 2,
+        "variant": "awq-int4",
+        "weights_gib": 37.03,
+        "kv_cache_gib": 20.0,
+        "overhead_gib": 1.5,
+        "estimate_gib": 58.53,
+        "mig_profile": "7g.80gb",
+        "replicas_per_gpu": 1
+      },
+      {
+        "name": "qwen2.5-72b-batch",
+        "replicas": 1,
+        "variant": "gptq-int4",
+        "weights_gib": 38.61,
+        "kv_cache_gib": 20.0,
+        "overhead_gib": 1.5,
+        "estimate_gib": 60.11,
+        "mig_profile": "7g.80gb",
+        "replicas_per_gpu": 1
+      }
+    ],
+    "allocations": [
+      {
+        "allocation": "one replica per whole GPU",
+        "gpus": 20,
+        "replicas": 20,
+        "estimate_over_gpu_memory_pct": 26.6,
+        "mig_memory_over_gpu_memory_pct": null,
+        "compute_slices_in_use": null
+      },
+      {
+        "allocation": "MIG-packed (first-fit decreasing)",
+        "gpus": 8,
+        "replicas": 20,
+        "estimate_over_gpu_memory_pct": 66.5,
+        "mig_memory_over_gpu_memory_pct": 100.0,
+        "compute_slices_in_use": "44/56"
+      }
+    ],
+    "mig_layout": [
+      {
+        "gpu": 0,
+        "instances": [
+          {
+            "profile": "7g.80gb",
+            "start_memory_slice": 0,
+            "replica": "llama-3.1-70b-reasoning/0"
+          }
+        ]
+      },
+      {
+        "gpu": 1,
+        "instances": [
+          {
+            "profile": "7g.80gb",
+            "start_memory_slice": 0,
+            "replica": "llama-3.1-70b-reasoning/1"
+          }
+        ]
+      },
+      {
+        "gpu": 2,
+        "instances": [
+          {
+            "profile": "7g.80gb",
+            "start_memory_slice": 0,
+            "replica": "qwen2.5-72b-batch/0"
+          }
+        ]
+      },
+      {
+        "gpu": 3,
+        "instances": [
+          {
+            "profile": "3g.40gb",
+            "start_memory_slice": 0,
+            "replica": "qwen2.5-14b-rag/0"
+          },
+          {
+            "profile": "3g.40gb",
+            "start_memory_slice": 4,
+            "replica": "qwen2.5-14b-rag/1"
+          }
+        ]
+      },
+      {
+        "gpu": 4,
+        "instances": [
+          {
+            "profile": "3g.40gb",
+            "start_memory_slice": 0,
+            "replica": "qwen2.5-14b-rag/2"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 4,
+            "replica": "llama-3.1-8b-chat/0"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 6,
+            "replica": "llama-3.1-8b-chat/1"
+          }
+        ]
+      },
+      {
+        "gpu": 5,
+        "instances": [
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 0,
+            "replica": "llama-3.1-8b-chat/2"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 2,
+            "replica": "llama-3.1-8b-chat/3"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 4,
+            "replica": "llama-3.1-8b-chat/4"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 6,
+            "replica": "llama-3.1-8b-chat/5"
+          }
+        ]
+      },
+      {
+        "gpu": 6,
+        "instances": [
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 0,
+            "replica": "llama-3.1-8b-chat/6"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 2,
+            "replica": "llama-3.1-8b-chat/7"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 4,
+            "replica": "qwen2.5-7b-assistant/0"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 6,
+            "replica": "qwen2.5-7b-assistant/1"
+          }
+        ]
+      },
+      {
+        "gpu": 7,
+        "instances": [
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 0,
+            "replica": "qwen2.5-7b-assistant/2"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 2,
+            "replica": "qwen2.5-7b-assistant/3"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 4,
+            "replica": "qwen2.5-7b-assistant/4"
+          },
+          {
+            "profile": "1g.20gb",
+            "start_memory_slice": 6,
+            "replica": "qwen2.5-7b-assistant/5"
+          }
+        ]
+      }
+    ]
+  },
+  "explain": {
+    "model": "llama-3.1-8b",
+    "variants": [
+      {
+        "variant": "fp16",
+        "weights_gib": 14.96,
+        "kv_cache_gib": 8.0,
+        "overhead_gib": 1.5,
+        "estimate_gib": 24.46,
+        "smallest_profile": "3g.40gb",
+        "profile_usable_gib": 35.33,
+        "replicas_per_gpu": 2
+      },
+      {
+        "variant": "gptq-int8",
+        "weights_gib": 8.61,
+        "kv_cache_gib": 8.0,
+        "overhead_gib": 1.5,
+        "estimate_gib": 18.11,
+        "smallest_profile": "3g.40gb",
+        "profile_usable_gib": 35.33,
+        "replicas_per_gpu": 2
+      },
+      {
+        "variant": "awq-int4",
+        "weights_gib": 5.33,
+        "kv_cache_gib": 8.0,
+        "overhead_gib": 1.5,
+        "estimate_gib": 14.83,
+        "smallest_profile": "1g.20gb",
+        "profile_usable_gib": 17.55,
+        "replicas_per_gpu": 4
+      },
+      {
+        "variant": "gptq-int4",
+        "weights_gib": 5.33,
+        "kv_cache_gib": 8.0,
+        "overhead_gib": 1.5,
+        "estimate_gib": 14.83,
+        "smallest_profile": "1g.20gb",
+        "profile_usable_gib": 17.55,
+        "replicas_per_gpu": 4
+      }
+    ]
+  }
+}
