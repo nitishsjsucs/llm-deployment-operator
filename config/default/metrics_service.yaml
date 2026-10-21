@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: controller-manager-metrics
+  namespace: system
+  labels:
+    app.kubernetes.io/name: llm-deployment-operator
+spec:
+  selector:
+    app.kubernetes.io/name: llm-deployment-operator
+    app.kubernetes.io/component: manager
+  ports:
+    - name: metrics
+      port: 8080
+      targetPort: metrics

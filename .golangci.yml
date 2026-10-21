@@ -1,0 +1,24 @@
+version: "2"
+linters:
+  enable:
+    - misspell
+    - unconvert
+    - unparam
+    - revive
+  settings:
+    revive:
+      rules:
+        - name: exported
+          disabled: true
+  exclusions:
+    presets:
+      # Unchecked errors from fmt.Fprint* and similar are fine for CLI output.
+      - std-error-handling
+formatters:
+  enable:
+    - gofmt
+    - goimports
+  settings:
+    goimports:
+      local-prefixes:
+        - github.com/nitishsjsucs/llm-deployment-operator

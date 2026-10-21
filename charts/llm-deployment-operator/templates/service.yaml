@@ -1,0 +1,16 @@
+{{- if .Values.metrics.service.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "llm-deployment-operator.fullname" . }}-metrics
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "llm-deployment-operator.labels" . | nindent 4 }}
+spec:
+  selector:
+    {{- include "llm-deployment-operator.selectorLabels" . | nindent 4 }}
+  ports:
+    - name: metrics
+      port: {{ .Values.metrics.port }}
+      targetPort: metrics
+{{- end }}

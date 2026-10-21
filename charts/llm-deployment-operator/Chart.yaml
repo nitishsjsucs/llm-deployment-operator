@@ -1,0 +1,17 @@
+apiVersion: v2
+name: llm-deployment-operator
+description: Kubernetes operator that rolls out Llama and Qwen models on KServe LLMInferenceService with MIG slices claimed through DRA.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+# resource.k8s.io/v1 (DRA) is served from Kubernetes 1.34.
+kubeVersion: ">=1.34.0-0"
+home: https://github.com/nitishsjsucs/llm-deployment-operator
+sources:
+  - https://github.com/nitishsjsucs/llm-deployment-operator
+keywords:
+  - kserve
+  - vllm
+  - dra
+  - mig
+  - llm

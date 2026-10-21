@@ -1,0 +1,57 @@
+image:
+  # No image is published; build one with `make docker-build docker-push IMG=...`.
+  repository: ghcr.io/nitishsjsucs/llm-deployment-operator
+  tag: ""  # defaults to the chart appVersion
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+replicaCount: 1
+
+# Enables leader election; required when replicaCount > 1.
+leaderElection: true
+
+# API group of the InferencePools KServe creates: inference.networking.k8s.io
+# (Gateway API Inference Extension v1) or inference.networking.x-k8s.io (v1alpha2).
+inferencePoolAPIGroup: inference.networking.k8s.io
+
+metrics:
+  port: 8080
+  service:
+    enabled: true
+
+probes:
+  port: 8081
+
+# Extra arguments for the manager, e.g. ["--zap-log-level=debug"].
+extraArgs: []
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+
+podAnnotations: {}
+
+podSecurityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop: ["ALL"]
+
+resources:
+  requests:
+    cpu: 10m
+    memory: 64Mi
+  limits:
+    cpu: 500m
+    memory: 256Mi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
