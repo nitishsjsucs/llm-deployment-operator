@@ -1,0 +1,24 @@
+# Qwen2.5-7B-Instruct with fp16 and AWQ checkpoints and the default rollout
+# settings (Canary, steps 10/50/100, 5m interval, 30m deadline).
+apiVersion: serving.llmops.dev/v1alpha1
+kind: ModelDeployment
+metadata:
+  name: qwen-assistant
+  namespace: team-b
+spec:
+  tenant: team-b
+  model:
+    family: qwen
+    name: Qwen/Qwen2.5-7B-Instruct
+    catalogRef: qwen2.5-7b
+  variants:
+    - quantization: fp16
+      uri: hf://Qwen/Qwen2.5-7B-Instruct
+    - quantization: awq
+      uri: hf://Qwen/Qwen2.5-7B-Instruct-AWQ
+  gpuBudget:
+    gpuType: A100-80GB
+    maxMemoryGiBPerReplica: 20
+    maxModelLen: 8192
+    maxConcurrentSequences: 8
+  replicas: 2

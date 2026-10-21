@@ -1,0 +1,4 @@
+resources:
+  - serving_v1alpha1_modeldeployment_llama.yaml
+  - serving_v1alpha1_modeldeployment_qwen.yaml
+  - serving_v1alpha1_tenantquota.yaml

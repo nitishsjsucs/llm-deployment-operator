@@ -1,0 +1,44 @@
+# Llama-3.1-8B-Instruct with fp16, AWQ and GPTQ checkpoints. With a 20 GiB
+# per-replica budget the fp16 weights (about 15 GiB) plus an 8 GiB KV cache do
+# not fit, so the planner picks the AWQ variant on a 1g.20gb MIG instance:
+# four replicas per A100-80GB.
+apiVersion: serving.llmops.dev/v1alpha1
+kind: ModelDeployment
+metadata:
+  name: llama-chat
+  namespace: team-a
+spec:
+  tenant: team-a
+  model:
+    family: llama
+    name: meta-llama/Llama-3.1-8B-Instruct
+    catalogRef: llama-3.1-8b
+  variants:
+    - quantization: fp16
+      uri: hf://meta-llama/Llama-3.1-8B-Instruct
+    - quantization: awq
+      uri: hf://hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4
+    - quantization: gptq
+      bits: 4
+      uri: hf://hugging-quants/Meta-Llama-3.1-8B-Instruct-GPTQ-INT4
+  gpuBudget:
+    gpuType: A100-80GB
+    maxMemoryGiBPerReplica: 20
+    maxModelLen: 8192
+    maxConcurrentSequences: 8
+  replicas: 4
+  runtime:
+    image: vllm/vllm-openai:v0.10.1
+    extraArgs:
+      - --enable-prefix-caching
+    env:
+      - name: HF_TOKEN
+        valueFrom:
+          secretKeyRef:
+            name: hf-token
+            key: token
+  rollout:
+    strategy: Canary
+    steps: [10, 50, 100]
+    stepInterval: 5m
+    progressDeadline: 30m

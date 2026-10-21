@@ -1,0 +1,15 @@
+# Binaries
+/bin/
+*.exe
+*.test
+
+# Test output
+cover.out
+*.coverprofile
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store

@@ -1,0 +1,14 @@
+# team-a may hold at most eight 1g.20gb instances (two A100-80GB GPUs) and
+# 160 GiB of MIG memory in total, canaries included.
+apiVersion: serving.llmops.dev/v1alpha1
+kind: TenantQuota
+metadata:
+  name: team-a
+spec:
+  tenant: team-a
+  migSlices:
+    - profile: 1g.20gb
+      max: 8
+    - profile: 3g.40gb
+      max: 2
+  maxGPUMemoryGiB: 160

@@ -1,0 +1,3 @@
+resources:
+  - bases/serving.llmops.dev_modeldeployments.yaml
+  - bases/serving.llmops.dev_tenantquotas.yaml
